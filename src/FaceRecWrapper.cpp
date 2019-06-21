@@ -139,7 +139,7 @@ bool FaceRecWrapper::CropFace( const cv::Mat & image, cv::Mat & cropped )
 {
 	// Detect face
 	std::vector<cv::Rect> faces;
-	cascade.detectMultiScale( image, faces, 1.05, 8, 0 | CV_HAAR_SCALE_IMAGE, cv::Size( 40, 40 ) );
+	cascade.detectMultiScale( image, faces, 1.05, 8, 0 | cv::CASCADE_SCALE_IMAGE, cv::Size( 40, 40 ) );
 	if ( !faces.size() )
 	{
 		return false;

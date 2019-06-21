@@ -52,7 +52,7 @@ int main( int argc, char ** argv )
 		for ( std::size_t j = 0; j < files.size(); ++j )
 		{
 			cv::Mat temp = cv::imread( pathDir + "/" + usernames[i] + "/" + files[j],
-				CV_LOAD_IMAGE_GRAYSCALE );
+				cv::IMREAD_GRAYSCALE);
 			if ( temp.data )
 			{
 				images.push_back( temp );

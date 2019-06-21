@@ -73,7 +73,7 @@ PAM_EXTERN int pam_sm_authenticate( pam_handle_t * pamh, int flags, int argc, co
 		if ( imCapture ) // Take image actively
 		{
 			vc.read( im );
-			cv::cvtColor( im, im, CV_BGR2GRAY );
+			cv::cvtColor( im, im, cv::COLOR_BGR2GRAY );
 		}
 		else // Check existing directory for stream of images
 		{
@@ -118,7 +118,7 @@ PAM_EXTERN int pam_sm_authenticate( pam_handle_t * pamh, int flags, int argc, co
 			}
 			imagePathLast = imagePath;
 
-			im = cv::imread( imagePath, CV_LOAD_IMAGE_GRAYSCALE );
+			im = cv::imread( imagePath, cv::IMREAD_GRAYSCALE );
 		}
 		if ( !im.size().area() > 0 )
 		{
