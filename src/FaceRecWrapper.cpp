@@ -80,7 +80,7 @@ void FaceRecWrapper::Load( const std::string & path )
 	SetTechnique( model["technique"] );
 
 	LoadCascade( path + "-cascade.xml" );
-	fr->load( path + "-facerec.xml" );
+	fr->read( path + "-facerec.xml" );
 }
 
 void FaceRecWrapper::SetLabelNames( const std::vector<std::string> & names )
@@ -100,20 +100,20 @@ bool FaceRecWrapper::SetTechnique( const std::string & t )
 {
 	if ( t == "eigen" )
 	{
-		fr = cv::face::createEigenFaceRecognizer( 10 );
+		fr = cv::face::EigenFaceRecognizer::create( 10 );
 	}
 	else if ( t == "fisher" )
 	{
-		fr = cv::face::createFisherFaceRecognizer();
+		fr = cv::face::FisherFaceRecognizer::create();
 	}
 	else if ( t == "lbph" )
 	{
-		fr = cv::face::createLBPHFaceRecognizer();
+		fr = cv::face::LBPHFaceRecognizer::create();
 	}
 	else
 	{
 		printf( "Invalid technique: %s, defaulting to eigenfaces.\n", technique.c_str() );
-		fr        = cv::face::createEigenFaceRecognizer( 10 );
+		fr        = cv::face::EigenFaceRecognizer::create( 10 );
 		technique = "eigen";
 		return false;
 	}
